@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "image": "assets/images/books/class-12/history/img1.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "History",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 2,
+    "image": "assets/images/books/class-12/history/img2.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "History",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 3,
+    "image": "assets/images/books/class-12/history/img3.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "History",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 4,
+    "image": "assets/images/books/class-12/geography/img4.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "Geography",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 5,
+    "image": "assets/images/books/class-12/geography/img5.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "Geography",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 6,
+    "image": "assets/images/books/class-12/geography/img6.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "Geography",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 7,
+    "image": "assets/images/books/class-12/political-science/img7.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "Political Science",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 8,
+    "image": "assets/images/books/class-12/political-science/img8.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "Political Science",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 9,
+    "image": "assets/images/books/class-12/political-science/img9.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "Political Science",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 10,
+    "image": "assets/images/books/class-12/home-science/img10.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "Home Science",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 11,
+    "image": "assets/images/books/class-12/home-science/img11.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "Home Science",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 12,
+    "image": "assets/images/books/class-12/home-science/img12.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "Home Science",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 13,
+    "image": "assets/images/books/class-12/english/img13.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "English",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 14,
+    "image": "assets/images/books/class-12/english/img14.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "English",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 15,
+    "image": "assets/images/books/class-12/english/img15.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "English",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 16,
+    "image": "assets/images/books/class-12/mathematics/img16.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "Mathematics",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 17,
+    "image": "assets/images/books/class-12/mathematics/img17.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "Mathematics",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 18,
+    "image": "assets/images/books/class-12/mathematics/img18.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "Mathematics",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  },
+  {
+    "id": 19,
+    "image": "assets/images/books/class-12/urdu/img19.jpg",
+    "title": "THE RI : MCQ MASTER",
+    "subject": "Urdu",
+    "mrp": "199",
+    "series": "mcq",
+    "class": "12"
+  },
+  {
+    "id": 20,
+    "image": "assets/images/books/class-12/urdu/img20.jpg",
+    "title": "THE RI : SUBJECTIVE MASTER",
+    "subject": "Urdu",
+    "mrp": "249",
+    "series": "subjective",
+    "class": "12"
+  },
+  {
+    "id": 21,
+    "image": "assets/images/books/class-12/urdu/img21.jpg",
+    "title": "THE RI : NOTES MASTER",
+    "subject": "Urdu",
+    "mrp": "149",
+    "series": "notes",
+    "class": "12"
+  }
+]

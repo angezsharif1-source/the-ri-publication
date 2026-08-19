@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>THE RI PUBLICATION · Class 12 Arts · Bihar Board</title>
+    <meta name="description" content="THE RI PUBLICATION – Class 12 Arts Stream Books for Bihar Board." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-book">📚</div>
+        <div class="loader-text">THE RI PUBLICATION</div>
+        <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HEADER - SHORT BANNER WITH CLASS 12 ARTS STREAM -->
+    <!-- ============================================================ -->
+    <header class="header">
+        <div class="container">
+            <!-- Short Banner - Only Class 12 Arts Stream -->
+            <div class="header-banner">
+                <div class="banner-content">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span><strong>📚 Class 12 Arts Stream</strong> · Bihar Board</span>
+                    <span class="banner-divider">|</span>
+                    <span class="banner-subjects">
+                        <a href="#" onclick="scrollToSubject('history')">History</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('geography')">Geography</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('political-science')">Pol. Science</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('home-science')">Home Science</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('english')">English</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('mathematics')">Mathematics</a>
+                        <span class="sep">·</span>
+                        <a href="#" onclick="scrollToSubject('urdu')">Urdu</a>
+                    </span>
+                    <span class="banner-divider">|</span>
+                    <span class="banner-series">
+                        <a href="#mcq">MCQ</a>
+                        <span class="sep">·</span>
+                        <a href="#subjective">Subjective</a>
+                        <span class="sep">·</span>
+                        <a href="#notes">Notes</a>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Main Header -->
+            <div class="header-inner">
+                <div class="logo">
+                    <span class="logo-icon">RI</span>
+                    <div>
+                        THE RI<span>.</span>
+                        <small>Trusted Educational Books</small>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#mcq">MCQ</a>
+                    <a href="#subjective">Subjective</a>
+                    <a href="#notes">Notes Master</a>
+                    <a href="#about">About</a>
+                    <a href="#app"><i class="fas fa-app-store"></i> App</a>
+                    <a href="#youtube"><i class="fab fa-youtube"></i></a>
+                    <div class="search-bar">
+                        <input type="text" id="globalSearch" placeholder="Search books..." />
+                        <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                </nav>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================================ -->
+    <section class="hero" id="home">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i> Class 12 Arts · Bihar Board
+                </div>
+                <h1><span class="highlight">THE RI</span> PUBLICATION</h1>
+                <p class="subtitle">Complete Study Material for Class 12 Arts Stream Students</p>
+                <div class="hero-subjects">
+                    <a href="#" onclick="scrollToSubject('history')" class="subject-tag">History</a>
+                    <a href="#" onclick="scrollToSubject('geography')" class="subject-tag">Geography</a>
+                    <a href="#" onclick="scrollToSubject('political-science')" class="subject-tag">Pol. Science</a>
+                    <a href="#" onclick="scrollToSubject('home-science')" class="subject-tag">Home Science</a>
+                    <a href="#" onclick="scrollToSubject('english')" class="subject-tag">English</a>
+                    <a href="#" onclick="scrollToSubject('mathematics')" class="subject-tag">Mathematics</a>
+                    <a href="#" onclick="scrollToSubject('urdu')" class="subject-tag">Urdu</a>
+                </div>
+                <div class="hero-series">
+                    <a href="#mcq" class="series-pill mcq">MCQ MASTER</a>
+                    <a href="#subjective" class="series-pill subjective">SUBJECTIVE MASTER</a>
+                    <a href="#notes" class="series-pill notes">NOTES MASTER</a>
+                </div>
+                <div class="hero-cta">
+                    <a href="#mcq" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Explore Books</a>
+                    <a href="https://play.google.com/store/apps/details?id=co.varys.viaqt" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Download App</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="5000">0</span>
+                        <span class="stat-label">Books Published</span>
+                        <span class="stat-future">(Future Plan)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">Subjects Covered</span>
+                        <span class="stat-future">(Future Plan)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="200">0</span>
+                        <span class="stat-label">Expert Authors</span>
+                        <span class="stat-future">(Future Plan)</span>
+                    </div>
+                </div>
+                <!-- Current Availability Note -->
+                <div class="hero-current-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Currently Available: <strong>Class 12 Arts Stream</strong> · 7 Subjects · 21 Books</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-book-stack">
+                    <div class="book-stack-item" style="transform: rotate(-8deg) translateY(-10px);">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="book-stack-item" style="transform: rotate(4deg) translateY(5px);">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="book-stack-item" style="transform: rotate(-2deg) translateY(20px);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- ============================================================ -->
+        <!-- ROW 1: MCQ MASTER -->
+        <!-- ============================================================ -->
+        <section id="mcq" class="series-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">
+                        <i class="fas fa-check-circle" style="color:#1565C0;"></i>
+                        THE RI : MCQ MASTER
+                    </h2>
+                </div>
+                <span class="badge mcq">7 Subjects</span>
+            </div>
+            <p class="section-desc">Master your exams with our comprehensive MCQ collection · ₹199 each</p>
+            <div class="carousel-wrapper">
+                <button class="scroll-btn left" onclick="scrollCarousel('mcqCarousel', -240)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-container" id="mcqCarousel"></div>
+                <button class="scroll-btn right" onclick="scrollCarousel('mcqCarousel', 240)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ROW 2: SUBJECTIVE MASTER -->
+        <!-- ============================================================ -->
+        <section id="subjective" class="series-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">
+                        <i class="fas fa-pen-fancy" style="color:#2E7D32;"></i>
+                        THE RI : SUBJECTIVE MASTER
+                    </h2>
+                </div>
+                <span class="badge subjective">7 Subjects</span>
+            </div>
+            <p class="section-desc">Master the art of writing perfect answers · ₹199 each</p>
+            <div class="carousel-wrapper">
+                <button class="scroll-btn left" onclick="scrollCarousel('subjectiveCarousel', -240)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-container" id="subjectiveCarousel"></div>
+                <button class="scroll-btn right" onclick="scrollCarousel('subjectiveCarousel', 240)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ROW 3: NOTES MASTER -->
+        <!-- ============================================================ -->
+        <section id="notes" class="series-section">
+            <div class="section-header">
+                <div class="section-title-wrapper">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">
+                        <i class="fas fa-lightbulb" style="color:#E65100;"></i>
+                        THE RI : NOTES MASTER
+                    </h2>
+                </div>
+                <span class="badge notes">7 Subjects</span>
+            </div>
+            <p class="section-desc">Quick revision notes for last-minute preparation · ₹199 each</p>
+            <div class="carousel-wrapper">
+                <button class="scroll-btn left" onclick="scrollCarousel('notesCarousel', -240)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="carousel-container" id="notesCarousel"></div>
+                <button class="scroll-btn right" onclick="scrollCarousel('notesCarousel', 240)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- WHY CHOOSE US -->
+        <!-- ============================================================ -->
+        <section class="why-choose">
+            <div class="section-header center">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title-large">Why THE RI Publication?</h2>
+                <p class="section-desc center">Complete Study Material for Class 12 Arts Stream</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Bihar Board Focus</h4>
+                    <p>Aligned with latest syllabus & exam pattern</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-user-tie"></i></div>
+                    <h4>Expert Authors</h4>
+                    <p>Written by experienced educators & subject matter experts</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-chart-line"></i></div>
+                    <h4>Proven Results</h4>
+                    <p>Trusted by 5000+ schools across Bihar</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Quality Content</h4>
+                    <p>NCERT-based, error-free, exam-oriented material</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ABOUT + APP + YOUTUBE + CONTACT -->
+        <!-- ============================================================ -->
+        <section class="info-grid" id="about">
+            <!-- About -->
+            <div class="info-card">
+                <div class="info-card-icon"><i class="fas fa-building" style="color:var(--secondary);"></i></div>
+                <h3>About Us</h3>
+                <p><strong>THE RI PUBLICATION</strong> is an educational publishing brand dedicated to providing high-quality learning resources for <strong>Class 12 Arts Stream</strong> students.</p>
+                <p style="margin-top:10px;">We prepare books based on latest syllabus, NCERT concepts, previous year analysis, verified answers and exam-oriented preparation.</p>
+                <blockquote>"To help students achieve better results through simple, accurate and effective study material."</blockquote>
+                <p style="margin-top:10px; font-size:0.85rem; color:var(--text-light);">
+                    <i class="fas fa-rocket" style="color:var(--secondary);"></i> 
+                    <strong>Future Plan:</strong> Expanding to 5000+ Books, 100+ Subjects, 200+ Expert Authors
+                </p>
+            </div>
+
+            <!-- App -->
+            <div class="info-card" id="app">
+                <div class="info-card-icon"><i class="fas fa-app-store" style="color:var(--secondary);"></i></div>
+                <h3>Download The Ri App</h3>
+                <p>Access educational videos, courses, study materials and latest updates through The Ri App.</p>
+                <a href="https://play.google.com/store/apps/details?id=co.varys.viaqt" target="_blank" class="btn btn-primary app-btn">
+                    <i class="fas fa-download"></i> Download App
+                </a>
+            </div>
+
+            <!-- YouTube -->
+            <div class="info-card" id="youtube">
+                <div class="info-card-icon"><i class="fab fa-youtube" style="color:#FF0000;"></i></div>
+                <h3>YouTube Channel</h3>
+                <p><strong>The Ri Bihar Board</strong> — Free educational videos, exam preparation, MCQ explanations and learning updates.</p>
+                <a href="https://www.youtube.com/@theribiharboard?si=VaEJ_5QttXw828M8" target="_blank" class="btn btn-primary youtube-btn">
+                    <i class="fab fa-youtube"></i> Subscribe Now
+                </a>
+            </div>
+
+            <!-- Contact -->
+            <div class="info-card" id="contact">
+                <div class="info-card-icon"><i class="fas fa-phone-alt" style="color:var(--secondary);"></i></div>
+                <h3>Contact</h3>
+                <p><i class="fas fa-globe"></i> www.theripublication.com</p>
+                <p><i class="fab fa-whatsapp"></i> 6203309502</p>
+                <p><i class="fas fa-envelope"></i> angezsharif1@gmail.com</p>
+                <p><i class="fab fa-youtube"></i> The Ri Bihar Board</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo" style="color:white;">
+                        THE RI<span>.</span>
+                        <small style="color:rgba(255,255,255,0.6);">Trusted Educational Books</small>
+                    </div>
+                    <p style="margin-top:8px; opacity:0.7;">Class 12 Arts Stream · Bihar Board</p>
+                    <p style="opacity:0.7;">www.theripublication.com</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Quick</h5>
+                        <a href="#mcq">MCQ Master</a>
+                        <a href="#subjective">Subjective Master</a>
+                        <a href="#notes">Notes Master</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Subjects</h5>
+                        <a href="#" onclick="scrollToSubject('history')">History</a>
+                        <a href="#" onclick="scrollToSubject('geography')">Geography</a>
+                        <a href="#" onclick="scrollToSubject('political-science')">Pol. Science</a>
+                        <a href="#" onclick="scrollToSubject('home-science')">Home Science</a>
+                        <a href="#" onclick="scrollToSubject('english')">English</a>
+                        <a href="#" onclick="scrollToSubject('mathematics')">Mathematics</a>
+                        <a href="#" onclick="scrollToSubject('urdu')">Urdu</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Connect</h5>
+                        <a href="#youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                        <a href="#app"><i class="fas fa-app-store"></i> App</a>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Legal</h5>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 The Ri Publication. All rights reserved. | Class 12 Arts Stream · Bihar Board</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/916203309502" target="_blank" class="float-wa" aria-label="Contact The Ri Publication">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Contact The Ri Publication</span>
+    </a>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================================================ -->
+    <!-- ORDER MODAL -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeOrderModal()"><i class="fas fa-times"></i></button>
+            <h2>📚 Place Your Order</h2>
+            <div class="book-name" id="modalBookName">THE RI : NOTES MASTER - History</div>
+            
+            <div class="min-order-note">
+                <i class="fas fa-info-circle"></i> Minimum 10 books required per order
+            </div>
+
+            <label for="orderName">Full Name *</label>
+            <input type="text" id="orderName" placeholder="Your full name" required />
+
+            <label for="orderPhone">Phone Number *</label>
+            <input type="tel" id="orderPhone" placeholder="Your WhatsApp number" required />
+
+            <label for="orderQuantity">Quantity (Books) *</label>
+            <input type="number" id="orderQuantity" placeholder="Minimum 10" min="10" value="10" required />
+
+            <label for="orderAddress">Delivery Address *</label>
+            <textarea id="orderAddress" placeholder="Full address with pincode" required></textarea>
+
+            <label for="orderCity">City / District *</label>
+            <input type="text" id="orderCity" placeholder="Your city" required />
+
+            <label for="orderPincode">Pincode *</label>
+            <input type="text" id="orderPincode" placeholder="6-digit pincode" required />
+
+            <label for="orderNote">Additional Note (Optional)</label>
+            <textarea id="orderNote" placeholder="Any special request..."></textarea>
+
+            <div class="btn-group">
+                <button class="btn btn-close-modal" onclick="closeOrderModal()">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button class="btn btn-send-order" onclick="sendOrder()">
+                    <i class="fab fa-whatsapp"></i> Send Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
