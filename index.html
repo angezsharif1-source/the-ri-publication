@@ -27,73 +27,44 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- HEADER - SHORT BANNER WITH CLASS 12 ARTS STREAM -->
+    <!-- HEADER - LOGO LEFT SIDE WITH THE RI -->
     <!-- ============================================================ -->
     <header class="header">
-        <div class="container">
-            <!-- Short Banner - Only Class 12 Arts Stream -->
-            <div class="header-banner">
-                <div class="banner-content">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span><strong>📚 Class 12 Arts Stream</strong> · Bihar Board</span>
-                    <span class="banner-divider">|</span>
-                    <span class="banner-subjects">
-                        <a href="#" onclick="scrollToSubject('history')">History</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('geography')">Geography</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('political-science')">Pol. Science</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('home-science')">Home Science</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('english')">English</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('mathematics')">Mathematics</a>
-                        <span class="sep">·</span>
-                        <a href="#" onclick="scrollToSubject('urdu')">Urdu</a>
-                    </span>
-                    <span class="banner-divider">|</span>
-                    <span class="banner-series">
-                        <a href="#mcq">MCQ</a>
-                        <span class="sep">·</span>
-                        <a href="#subjective">Subjective</a>
-                        <span class="sep">·</span>
-                        <a href="#notes">Notes</a>
-                    </span>
+        <div class="container header-inner">
+            <!-- Logo Left Side -->
+            <div class="logo">
+                <div class="logo-wrapper-left">
+                    <img src="assets/images/logo/the-ri-publication-logo.png" alt="THE RI PUBLICATION" class="logo-image-left" />
+                </div>
+                <div class="logo-text">
+                    THE RI<span>.</span>
+                    <small>Trusted Educational Books</small>
                 </div>
             </div>
-
-            <!-- Main Header -->
-            <div class="header-inner">
-                <div class="logo">
-                    <span class="logo-icon">RI</span>
-                    <div>
-                        THE RI<span>.</span>
-                        <small>Trusted Educational Books</small>
-                    </div>
+            
+            <!-- Navigation -->
+            <nav class="nav">
+                <a href="#home" class="active">Home</a>
+                <a href="#mcq">MCQ</a>
+                <a href="#subjective">Subjective</a>
+                <a href="#notes">Notes Master</a>
+                <a href="#about">About</a>
+                <a href="#app"><i class="fas fa-app-store"></i> App</a>
+                <a href="#youtube"><i class="fab fa-youtube"></i></a>
+                <div class="search-bar">
+                    <input type="text" id="globalSearch" placeholder="Search books..." />
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
-                <nav class="nav">
-                    <a href="#home" class="active">Home</a>
-                    <a href="#mcq">MCQ</a>
-                    <a href="#subjective">Subjective</a>
-                    <a href="#notes">Notes Master</a>
-                    <a href="#about">About</a>
-                    <a href="#app"><i class="fas fa-app-store"></i> App</a>
-                    <a href="#youtube"><i class="fab fa-youtube"></i></a>
-                    <div class="search-bar">
-                        <input type="text" id="globalSearch" placeholder="Search books..." />
-                        <button id="searchBtn"><i class="fas fa-search"></i></button>
-                    </div>
-                </nav>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            </nav>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
     <!-- ============================================================ -->
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION - WITH SUB TITLE -->
     <!-- ============================================================ -->
     <section class="hero" id="home">
         <div class="hero-bg-shapes">
@@ -107,16 +78,10 @@
                     <i class="fas fa-star"></i> Class 12 Arts · Bihar Board
                 </div>
                 <h1><span class="highlight">THE RI</span> PUBLICATION</h1>
-                <p class="subtitle">Complete Study Material for Class 12 Arts Stream Students</p>
-                <div class="hero-subjects">
-                    <a href="#" onclick="scrollToSubject('history')" class="subject-tag">History</a>
-                    <a href="#" onclick="scrollToSubject('geography')" class="subject-tag">Geography</a>
-                    <a href="#" onclick="scrollToSubject('political-science')" class="subject-tag">Pol. Science</a>
-                    <a href="#" onclick="scrollToSubject('home-science')" class="subject-tag">Home Science</a>
-                    <a href="#" onclick="scrollToSubject('english')" class="subject-tag">English</a>
-                    <a href="#" onclick="scrollToSubject('mathematics')" class="subject-tag">Mathematics</a>
-                    <a href="#" onclick="scrollToSubject('urdu')" class="subject-tag">Urdu</a>
-                </div>
+                <p class="hero-subtitle">A Publication Division of THE RI: THE RESEARCH INSTITUTE</p>
+                <p class="hero-desc">Complete Study Material for Class 12 Arts Stream Students</p>
+                
+                <!-- Series - CLICKABLE -->
                 <div class="hero-series">
                     <a href="#mcq" class="series-pill mcq">MCQ MASTER</a>
                     <a href="#subjective" class="series-pill subjective">SUBJECTIVE MASTER</a>
@@ -143,11 +108,6 @@
                         <span class="stat-future">(Future Plan)</span>
                     </div>
                 </div>
-                <!-- Current Availability Note -->
-                <div class="hero-current-note">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Currently Available: <strong>Class 12 Arts Stream</strong> · 7 Subjects · 21 Books</span>
-                </div>
             </div>
             <div class="hero-image">
                 <div class="hero-book-stack">
@@ -166,6 +126,7 @@
     </section>
 
     <main class="container">
+
         <!-- ============================================================ -->
         <!-- ROW 1: MCQ MASTER -->
         <!-- ============================================================ -->
@@ -180,15 +141,10 @@
                 </div>
                 <span class="badge mcq">7 Subjects</span>
             </div>
-            <p class="section-desc">Master your exams with our comprehensive MCQ collection · ₹199 each</p>
-            <div class="carousel-wrapper">
-                <button class="scroll-btn left" onclick="scrollCarousel('mcqCarousel', -240)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+            <div class="carousel-wrapper" data-autoscroll="true">
+                <button class="scroll-btn left" onclick="scrollCarousel('mcqCarousel', -260)"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-container" id="mcqCarousel"></div>
-                <button class="scroll-btn right" onclick="scrollCarousel('mcqCarousel', 240)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="scroll-btn right" onclick="scrollCarousel('mcqCarousel', 260)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -206,15 +162,10 @@
                 </div>
                 <span class="badge subjective">7 Subjects</span>
             </div>
-            <p class="section-desc">Master the art of writing perfect answers · ₹199 each</p>
-            <div class="carousel-wrapper">
-                <button class="scroll-btn left" onclick="scrollCarousel('subjectiveCarousel', -240)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+            <div class="carousel-wrapper" data-autoscroll="true">
+                <button class="scroll-btn left" onclick="scrollCarousel('subjectiveCarousel', -260)"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-container" id="subjectiveCarousel"></div>
-                <button class="scroll-btn right" onclick="scrollCarousel('subjectiveCarousel', 240)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="scroll-btn right" onclick="scrollCarousel('subjectiveCarousel', 260)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -232,15 +183,10 @@
                 </div>
                 <span class="badge notes">7 Subjects</span>
             </div>
-            <p class="section-desc">Quick revision notes for last-minute preparation · ₹199 each</p>
-            <div class="carousel-wrapper">
-                <button class="scroll-btn left" onclick="scrollCarousel('notesCarousel', -240)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+            <div class="carousel-wrapper" data-autoscroll="true">
+                <button class="scroll-btn left" onclick="scrollCarousel('notesCarousel', -260)"><i class="fas fa-chevron-left"></i></button>
                 <div class="carousel-container" id="notesCarousel"></div>
-                <button class="scroll-btn right" onclick="scrollCarousel('notesCarousel', 240)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="scroll-btn right" onclick="scrollCarousel('notesCarousel', 260)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -281,7 +227,6 @@
         <!-- ABOUT + APP + YOUTUBE + CONTACT -->
         <!-- ============================================================ -->
         <section class="info-grid" id="about">
-            <!-- About -->
             <div class="info-card">
                 <div class="info-card-icon"><i class="fas fa-building" style="color:var(--secondary);"></i></div>
                 <h3>About Us</h3>
@@ -294,7 +239,6 @@
                 </p>
             </div>
 
-            <!-- App -->
             <div class="info-card" id="app">
                 <div class="info-card-icon"><i class="fas fa-app-store" style="color:var(--secondary);"></i></div>
                 <h3>Download The Ri App</h3>
@@ -304,7 +248,6 @@
                 </a>
             </div>
 
-            <!-- YouTube -->
             <div class="info-card" id="youtube">
                 <div class="info-card-icon"><i class="fab fa-youtube" style="color:#FF0000;"></i></div>
                 <h3>YouTube Channel</h3>
@@ -314,7 +257,6 @@
                 </a>
             </div>
 
-            <!-- Contact -->
             <div class="info-card" id="contact">
                 <div class="info-card-icon"><i class="fas fa-phone-alt" style="color:var(--secondary);"></i></div>
                 <h3>Contact</h3>
@@ -332,8 +274,13 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="logo" style="color:white;">
-                        THE RI<span>.</span>
-                        <small style="color:rgba(255,255,255,0.6);">Trusted Educational Books</small>
+                        <div class="logo-wrapper-left">
+                            <img src="assets/images/logo/the-ri-publication-logo.png" alt="THE RI PUBLICATION" class="logo-image-left" />
+                        </div>
+                        <div class="logo-text">
+                            THE RI<span>.</span>
+                            <small style="color:rgba(255,255,255,0.6);">Trusted Educational Books</small>
+                        </div>
                     </div>
                     <p style="margin-top:8px; opacity:0.7;">Class 12 Arts Stream · Bihar Board</p>
                     <p style="opacity:0.7;">www.theripublication.com</p>
