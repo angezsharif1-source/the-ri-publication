@@ -5,81 +5,190 @@
 (function() {
     'use strict';
 
-    // ---------- YOUTUBE CHANNEL URL ----------
     const YOUTUBE_URL = 'https://www.youtube.com/@theribiharboard?si=VaEJ_5QttXw828M8';
-
-    // ---------- FETCH BOOKS FROM JSON ----------
     let allBooks = [];
+    let autoScrollIntervals = {};
+    let scrollDirections = {};
 
+    // ---------- LOAD BOOKS ----------
     async function loadBooks() {
         try {
             const response = await fetch('assets/data/books.json');
-            if (!response.ok) throw new Error('Failed to load books.json');
+            if (!response.ok) throw new Error('Failed to load books');
             allBooks = await response.json();
-            renderAllCarousels();
+            renderAll();
             setupSearch();
             animateCounters();
+            setupAutoScroll();
         } catch (error) {
-            console.error('Error loading books:', error);
+            console.error('Error:', error);
             allBooks = getFallbackBooks();
-            renderAllCarousels();
+            renderAll();
             setupSearch();
             animateCounters();
+            setupAutoScroll();
         }
     }
 
-    // ---------- FALLBACK BOOKS ----------
     function getFallbackBooks() {
         return [
-            { id: 1, image: "assets/images/books/class-10/mathematics/math-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Mathematics", mrp: "199", series: "mcq", class: "10" },
-            { id: 2, image: "assets/images/books/class-10/science/science-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Science", mrp: "199", series: "mcq", class: "10" },
-            { id: 3, image: "assets/images/books/class-10/social-science/social-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Social Science", mrp: "199", series: "mcq", class: "10" },
-            { id: 4, image: "assets/images/books/class-10/english/english-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "English", mrp: "199", series: "mcq", class: "10" },
-            { id: 5, image: "assets/images/books/class-10/hindi/hindi-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Hindi", mrp: "199", series: "mcq", class: "10" },
-            { id: 6, image: "assets/images/books/class-10/urdu/urdu-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Urdu", mrp: "199", series: "mcq", class: "10" },
-            { id: 7, image: "assets/images/books/class-12/history/history-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "History", mrp: "199", series: "mcq", class: "12" },
-            { id: 8, image: "assets/images/books/class-12/geography/geography-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Geography", mrp: "199", series: "mcq", class: "12" },
-            { id: 9, image: "assets/images/books/class-12/political-science/pol-science-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Political Science", mrp: "199", series: "mcq", class: "12" },
-            { id: 10, image: "assets/images/books/class-12/economics/economics-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Economics", mrp: "199", series: "mcq", class: "12" },
-            { id: 11, image: "assets/images/books/class-12/english/english-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "English", mrp: "199", series: "mcq", class: "12" },
-            { id: 12, image: "assets/images/books/class-12/hindi/hindi-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Hindi", mrp: "199", series: "mcq", class: "12" },
-            { id: 13, image: "assets/images/books/class-12/urdu/urdu-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "Urdu", mrp: "199", series: "mcq", class: "12" },
-            { id: 14, image: "assets/images/books/competitive/upsc/upsc-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "UPSC", mrp: "299", series: "mcq", class: "competitive" },
-            { id: 15, image: "assets/images/books/competitive/bpsc/bpsc-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "BPSC", mrp: "299", series: "mcq", class: "competitive" },
-            { id: 16, image: "assets/images/books/competitive/ssc/ssc-mcq-master.jpg", title: "THE RI : MCQ MASTER", subject: "SSC", mrp: "299", series: "mcq", class: "competitive" }
+            { id: 1, image: "assets/images/books/class-12/history/img1.jpg", title: "THE RI : MCQ MASTER", subject: "History", mrp: "199", series: "mcq" },
+            { id: 2, image: "assets/images/books/class-12/history/img2.jpg", title: "THE RI : SUBJECTIVE MASTER", subject: "History", mrp: "199", series: "subjective" },
+            { id: 3, image: "assets/images/books/class-12/history/img3.jpg", title: "THE RI : NOTES MASTER", subject: "History", mrp: "199", series: "notes" }
         ];
     }
 
-    // Series Config
     const seriesConfig = {
-        mcq: { label: 'THE RI : MCQ MASTER', cssClass: 'mcq', color: '#1565C0' },
-        subjective: { label: 'THE RI : SUBJECTIVE MASTER', cssClass: 'subjective', color: '#2E7D32' },
-        notes: { label: 'THE RI : NOTES MASTER', cssClass: 'notes', color: '#E65100' }
+        mcq: { label: 'THE RI : MCQ MASTER', cssClass: 'mcq' },
+        subjective: { label: 'THE RI : SUBJECTIVE MASTER', cssClass: 'subjective' },
+        notes: { label: 'THE RI : NOTES MASTER', cssClass: 'notes' }
+    };
+
+    // ---------- SLOW + SMOOTH AUTO SCROLL ----------
+    function setupAutoScroll() {
+        const wrappers = document.querySelectorAll('.carousel-wrapper[data-autoscroll="true"]');
+        wrappers.forEach(wrapper => {
+            const container = wrapper.querySelector('.carousel-container');
+            if (!container) return;
+
+            const id = container.id;
+            scrollDirections[id] = 1; // 1 = left to right, -1 = right to left
+
+            // Clear existing interval
+            if (autoScrollIntervals[id]) {
+                clearInterval(autoScrollIntervals[id]);
+            }
+
+            // Start slow auto scroll
+            autoScrollIntervals[id] = setInterval(() => {
+                if (container) {
+                    const scrollAmount = 0.5; // SLOW speed
+                    container.scrollLeft += scrollAmount * scrollDirections[id];
+
+                    // Change direction when reaching end
+                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+                        scrollDirections[id] = -1; // Right to left
+                    } else if (container.scrollLeft <= 0) {
+                        scrollDirections[id] = 1; // Left to right
+                    }
+                }
+            }, 30); // 30ms interval = smooth
+
+            // Pause on hover
+            wrapper.addEventListener('mouseenter', () => {
+                if (autoScrollIntervals[id]) {
+                    clearInterval(autoScrollIntervals[id]);
+                }
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                // Restart auto scroll
+                if (autoScrollIntervals[id]) {
+                    clearInterval(autoScrollIntervals[id]);
+                }
+                autoScrollIntervals[id] = setInterval(() => {
+                    if (container) {
+                        const scrollAmount = 0.5;
+                        container.scrollLeft += scrollAmount * scrollDirections[id];
+
+                        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+                            scrollDirections[id] = -1;
+                        } else if (container.scrollLeft <= 0) {
+                            scrollDirections[id] = 1;
+                        }
+                    }
+                }, 30);
+            });
+
+            // Pause on touch (mobile)
+            container.addEventListener('touchstart', () => {
+                if (autoScrollIntervals[id]) {
+                    clearInterval(autoScrollIntervals[id]);
+                }
+            });
+
+            container.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    if (autoScrollIntervals[id]) {
+                        clearInterval(autoScrollIntervals[id]);
+                    }
+                    autoScrollIntervals[id] = setInterval(() => {
+                        if (container) {
+                            const scrollAmount = 0.5;
+                            container.scrollLeft += scrollAmount * scrollDirections[id];
+
+                            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+                                scrollDirections[id] = -1;
+                            } else if (container.scrollLeft <= 0) {
+                                scrollDirections[id] = 1;
+                            }
+                        }
+                    }, 30);
+                }, 3000);
+            });
+        });
+    }
+
+    // ---------- SCROLL CAROUSEL (Manual) ----------
+    window.scrollCarousel = function(id, amount) {
+        const container = document.getElementById(id);
+        if (container) {
+            container.scrollLeft += amount;
+            // Pause auto scroll when manually scrolling
+            if (autoScrollIntervals[id]) {
+                clearInterval(autoScrollIntervals[id]);
+                // Restart after 3 seconds
+                setTimeout(() => {
+                    if (autoScrollIntervals[id]) {
+                        clearInterval(autoScrollIntervals[id]);
+                    }
+                    autoScrollIntervals[id] = setInterval(() => {
+                        const cont = document.getElementById(id);
+                        if (cont) {
+                            const scrollAmount = 0.5;
+                            cont.scrollLeft += scrollAmount * scrollDirections[id];
+
+                            if (cont.scrollLeft + cont.clientWidth >= cont.scrollWidth - 5) {
+                                scrollDirections[id] = -1;
+                            } else if (cont.scrollLeft <= 0) {
+                                scrollDirections[id] = 1;
+                            }
+                        }
+                    }, 30);
+                }, 3000);
+            }
+        }
+    };
+
+    // ---------- SCROLL TO SUBJECT ----------
+    window.scrollToSubject = function(subject) {
+        const el = document.getElementById('mcq');
+        if (el) {
+            const offset = 120;
+            const top = el.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
     };
 
     // ---------- ANIMATE COUNTERS ----------
     function animateCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        counters.forEach(counter => {
+        document.querySelectorAll('.stat-number').forEach(counter => {
             const target = parseInt(counter.getAttribute('data-count'));
             if (!target) return;
-            const duration = 1500;
-            const step = Math.max(1, Math.floor(target / 60));
             let current = 0;
-            const increment = () => {
-                current += step;
-                if (current >= target) {
-                    counter.textContent = target + '+';
-                    return;
-                }
-                counter.textContent = current + '+';
-                requestAnimationFrame(increment);
-            };
-            // Start animation when element is visible
+            const step = Math.max(1, Math.floor(target / 50));
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        increment();
+                        const interval = setInterval(() => {
+                            current += step;
+                            if (current >= target) {
+                                counter.textContent = target + '+';
+                                clearInterval(interval);
+                                return;
+                            }
+                            counter.textContent = current + '+';
+                        }, 30);
                         observer.disconnect();
                     }
                 });
@@ -88,14 +197,14 @@
         });
     }
 
-    // ---------- MODAL FUNCTIONS ----------
+    // ---------- MODAL ----------
     let currentBook = null;
 
     window.openOrderModal = function(bookId) {
         const book = allBooks.find(b => b.id === bookId);
         if (!book) return;
         currentBook = book;
-        document.getElementById('modalBookName').textContent = `${book.title} - ${book.subject}`;
+        document.getElementById('modalBookName').textContent = book.title + ' - ' + book.subject;
         document.getElementById('orderQuantity').value = 10;
         document.getElementById('orderName').value = '';
         document.getElementById('orderPhone').value = '';
@@ -122,54 +231,43 @@
         const note = document.getElementById('orderNote').value.trim();
 
         if (!name) { alert('Please enter your full name.'); return; }
-        if (!phone) { alert('Please enter your phone number.'); return; }
-        if (phone.length < 10) { alert('Please enter a valid 10-digit phone number.'); return; }
+        if (!phone || phone.length < 10) { alert('Please enter a valid 10-digit phone number.'); return; }
         if (!quantity || quantity < 10) { alert('Minimum order quantity is 10 books.'); return; }
         if (!address) { alert('Please enter your delivery address.'); return; }
         if (!city) { alert('Please enter your city.'); return; }
         if (!pincode || pincode.length < 6) { alert('Please enter a valid 6-digit pincode.'); return; }
 
-        const bookName = currentBook ? `${currentBook.title} - ${currentBook.subject}` : 'Book';
-        const totalPrice = currentBook ? parseInt(currentBook.mrp) * quantity : quantity * 149;
+        const bookName = currentBook ? currentBook.title + ' - ' + currentBook.subject : 'Book';
+        const totalPrice = currentBook ? parseInt(currentBook.mrp) * quantity : quantity * 199;
 
         const message = `
-📚 *NEW BOOK ORDER - THE RI PUBLICATION*
+📚 NEW BOOK ORDER - THE RI PUBLICATION
 ─────────────────────────
-📖 *Book:* ${bookName}
-📦 *Quantity:* ${quantity} books
-💰 *Total Amount:* ₹${totalPrice} (₹${currentBook ? currentBook.mrp : '149'} × ${quantity})
+📖 Book: ${bookName}
+📦 Quantity: ${quantity} books
+💰 Total: ₹${totalPrice} (₹${currentBook ? currentBook.mrp : '199'} × ${quantity})
 ─────────────────────────
-👤 *Customer Details:*
-• Name: ${name}
-• Phone: ${phone}
+👤 Customer:
+Name: ${name}
+Phone: ${phone}
 ─────────────────────────
-📍 *Delivery Address:*
+📍 Address:
 ${address}
 City: ${city}
 Pincode: ${pincode}
 ─────────────────────────
-📝 *Additional Note:*
-${note || 'N/A'}
+📝 Note: ${note || 'N/A'}
 ─────────────────────────
-✅ *Order Confirmation Required*
-Please confirm availability & delivery charges.
+✅ Please confirm availability & delivery charges.
         `.trim();
 
-        const encodedMsg = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/916203309502?text=${encodedMsg}`;
-
+        const encoded = encodeURIComponent(message);
         closeOrderModal();
-        window.open(whatsappUrl, '_blank');
+        window.open('https://wa.me/916203309502?text=' + encoded, '_blank');
     };
 
-    // Click outside modal to close
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('orderModal');
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) closeOrderModal();
-            });
-        }
+    document.getElementById('orderModal').addEventListener('click', function(e) {
+        if (e.target === this) closeOrderModal();
     });
 
     // ---------- RENDER CAROUSEL ----------
@@ -180,7 +278,7 @@ Please confirm availability & delivery charges.
         const cfg = seriesConfig[seriesKey] || seriesConfig.mcq;
 
         if (filtered.length === 0) {
-            container.innerHTML = `<p style="padding:20px; color:var(--text-light); text-align:center;">No books found in this series.</p>`;
+            container.innerHTML = '<p style="padding:20px; color:#4A5568;">No books found.</p>';
             return;
         }
 
@@ -189,7 +287,7 @@ Please confirm availability & delivery charges.
             return `
                 <div class="carousel-item">
                     <div class="book-cover">
-                        ${imgSrc ? `<img src="${imgSrc}" alt="${b.title} ${b.subject}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='#E6EEF9'; this.parentElement.innerHTML='📘';">` : '📘'}
+                        ${imgSrc ? `<img src="${imgSrc}" alt="${b.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='📘';">` : '📘'}
                     </div>
                     <div class="series-tag ${cfg.cssClass}">${cfg.label}</div>
                     <h4>${b.title}</h4>
@@ -205,19 +303,11 @@ Please confirm availability & delivery charges.
         }).join('');
     }
 
-    function renderAllCarousels() {
+    function renderAll() {
         renderCarousel('mcqCarousel', 'mcq');
         renderCarousel('subjectiveCarousel', 'subjective');
         renderCarousel('notesCarousel', 'notes');
     }
-
-    // ---------- SCROLL ----------
-    window.scrollCarousel = function(containerId, amount) {
-        const container = document.getElementById(containerId);
-        if (container) {
-            container.scrollBy({ left: amount, behavior: 'smooth' });
-        }
-    };
 
     // ---------- SEARCH ----------
     function setupSearch() {
@@ -231,18 +321,14 @@ Please confirm availability & delivery charges.
                 const container = document.getElementById(id);
                 if (!container) return;
                 const seriesKey = id.replace('Carousel', '');
-                const filtered = allBooks.filter(b => 
+                const filtered = allBooks.filter(b =>
                     b.series === seriesKey &&
                     (b.title.toLowerCase().includes(query) || b.subject.toLowerCase().includes(query))
                 );
                 const cfg = seriesConfig[seriesKey] || seriesConfig.mcq;
-                if (filtered.length === 0 || query === '') {
-                    if (query === '') {
-                        // Reset to show all
-                        renderCarousel(id, seriesKey);
-                        return;
-                    }
-                    container.innerHTML = `<p style="padding:20px; color:var(--text-light); text-align:center;">No books found for "${query}"</p>`;
+                if (!query || filtered.length === 0) {
+                    if (!query) { renderCarousel(id, seriesKey); return; }
+                    container.innerHTML = '<p style="padding:20px; color:#4A5568;">No books found for "' + query + '"</p>';
                     return;
                 }
                 container.innerHTML = filtered.map(b => {
@@ -250,7 +336,7 @@ Please confirm availability & delivery charges.
                     return `
                         <div class="carousel-item">
                             <div class="book-cover">
-                                ${imgSrc ? `<img src="${imgSrc}" alt="${b.title} ${b.subject}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='#E6EEF9'; this.parentElement.innerHTML='📘';">` : '📘'}
+                                ${imgSrc ? `<img src="${imgSrc}" alt="${b.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='📘';">` : '📘'}
                             </div>
                             <div class="series-tag ${cfg.cssClass}">${cfg.label}</div>
                             <h4>${b.title}</h4>
@@ -272,33 +358,23 @@ Please confirm availability & delivery charges.
         input.addEventListener('input', doSearch);
     }
 
-    // ---------- HEADER SCROLL EFFECT ----------
+    // ---------- HEADER SCROLL ----------
     function setupHeaderScroll() {
         const header = document.querySelector('.header');
         if (!header) return;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 20);
         });
     }
 
-    // ---------- SCROLL TO TOP ----------
+    // ---------- SCROLL TOP ----------
     function setupScrollTop() {
         const btn = document.getElementById('scrollTopBtn');
         if (!btn) return;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
+            btn.classList.toggle('visible', window.scrollY > 400);
         });
-        btn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
     // ---------- MOBILE MENU ----------
@@ -308,27 +384,16 @@ Please confirm availability & delivery charges.
         if (!toggle || !nav) return;
         toggle.addEventListener('click', () => {
             nav.classList.toggle('open');
-            toggle.innerHTML = nav.classList.contains('open') ? 
-                '<i class="fas fa-times"></i>' : 
+            toggle.innerHTML = nav.classList.contains('open') ?
+                '<i class="fas fa-times"></i>' :
                 '<i class="fas fa-bars"></i>';
         });
-        // Close menu on link click
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');
                 toggle.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
-    }
-
-    // ---------- LOADER ----------
-    function hideLoader() {
-        const loader = document.getElementById('loader');
-        if (loader) {
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 800);
-        }
     }
 
     // ---------- ANCHORS ----------
@@ -338,12 +403,17 @@ Please confirm availability & delivery charges.
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     e.preventDefault();
-                    const offset = 80;
-                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    const top = target.getBoundingClientRect().top + window.scrollY - 80;
                     window.scrollTo({ top, behavior: 'smooth' });
                 }
             });
         });
+    }
+
+    // ---------- LOADER ----------
+    function hideLoader() {
+        const loader = document.getElementById('loader');
+        if (loader) setTimeout(() => loader.classList.add('hidden'), 800);
     }
 
     // ---------- INIT ----------
